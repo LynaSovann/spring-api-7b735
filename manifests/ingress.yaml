@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: spring-api-7b735-https-ingress
+  namespace: spring-api-7b735
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - dara-kok5367-spring-api.assessify.org
+      secretName: spring-api-7b735-secret-tls
+  rules:
+    - host: dara-kok5367-spring-api.assessify.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: spring-api-7b735-service
+                port:
+                  number: 8145
