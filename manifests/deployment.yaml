@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-api-7b735-deployment
+  labels:
+    app: spring-api-7b735
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-api-7b735
+  template:
+    metadata:
+      labels:
+        app: spring-api-7b735
+    spec:
+      containers:
+        - name: spring-api-7b735-container
+          image: pipejet/spring-api-7b735:latest
+          ports:
+            - containerPort: 8080
