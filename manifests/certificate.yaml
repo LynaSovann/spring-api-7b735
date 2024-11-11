@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: spring-api-7b735-certificate
+  namespace: spring-api-7b735
+spec:
+  secretName: spring-api-7b735-secret-tls
+  commonName: dara-kok5367-spring-api.assessify.org
+  dnsNames:
+  - dara-kok5367-spring-api.assessify.org
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
